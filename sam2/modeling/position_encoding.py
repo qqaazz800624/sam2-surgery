@@ -45,7 +45,7 @@ class PositionEmbeddingSine(nn.Module):
         self.cache = {}
         if warmup_cache and torch.cuda.is_available():
             # Warmup cache for cuda, to help with compilation
-            device = torch.device("cuda")
+            device = torch.device("cuda:3")
             for stride in strides:
                 cache_key = (image_size // stride, image_size // stride)
                 self._pe(1, device, *cache_key)
